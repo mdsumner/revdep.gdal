@@ -11,7 +11,7 @@ name: revdeps-gdal
 jobs:
   run-revdeps:
     runs-on: ${{ matrix.config.os }}
-    container: ghcr.io/osgeo/gdal:ubuntu-full-latest
+    container: ghcr.io/mdsumner/gdal-builds:rocker-gdal-dev
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
 
     strategy:
