@@ -24,7 +24,7 @@ get_packages <- function() {
   if (Sys.info()["nodename"] %in% c("marinepredators")) {
     return(31L)
   } else {
-    return(4L)
+    return(11L)
   }
 }
 revdep <- function() {
