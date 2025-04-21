@@ -34,7 +34,7 @@ revdep <- function() {
   pkgs <- pkgs[fs::is_dir(pkgs)]
 
   for (i in seq_along(pkgs)) {
-    chk <- revdepcheck::revdep_check(pkgs[i], num_workers = .num_workers())
+    chk <- try(revdepcheck::revdep_check(pkgs[i], num_workers = .num_workers()))
   }
 }
 
