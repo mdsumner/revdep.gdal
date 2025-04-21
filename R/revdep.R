@@ -31,7 +31,7 @@ revdep <- function() {
   get_packages()
   workingdir <- "_revdepbuild"
   pkgs <- fs::dir_ls(workingdir)
-  pkgs <- pkgs[fs::is_dir(pkgs)]
+  pkgs <- sample(pkgs[fs::is_dir(pkgs)])
 
   for (i in seq_along(pkgs)) {
     chk <- try(revdepcheck::revdep_check(pkgs[i], num_workers = .num_workers()))
