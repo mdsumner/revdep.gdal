@@ -1,2 +1,5 @@
 ^revdep\.gdal\.Rproj$
 ^\.Rproj\.user$
+^.Rhistory$
+^_.*/$
+^\.github$

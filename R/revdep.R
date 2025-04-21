@@ -1,5 +1,5 @@
 packages_to_revdep <- function() {
-  c("dga", "terra", "sf", "gdalraster", "vapour", "gdalcubes")
+  c( "terra", "sf", "gdalraster", "vapour", "gdalcubes")
 }
 
 
@@ -36,4 +36,14 @@ revdep <- function() {
   for (i in seq_along(pkgs)) {
     chk <- revdepcheck::revdep_check(pkgs[i], num_workers = .num_workers())
   }
+}
+
+cleanup <- function() {
+  f <- fs::dir_ls(regexp = "_revdepbuild", recurse = T, type  = "f")
+ ok <- file.path("revdep", c("cran.md", "data.sqlite", "failures.md", "problems.md", "README.md")  )
+  keep <- unlist(lapply(ok, \(.x) grep(.x, f, value = TRUE)))
+  todelete <- setdiff(f, keep)
+  todelete <- todelete[fs::file_exists(todelete)]
+ for (i in seq_along(todelete)) try(fs::file_delete(todelete[i]))
+
 }
